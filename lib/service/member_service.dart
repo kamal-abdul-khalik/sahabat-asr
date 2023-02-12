@@ -22,7 +22,6 @@ class MemberService {
   }) async {
     const storage = FlutterSecureStorage();
     var token = (await storage.read(key: 'token'))!;
-
     var response = await Dio().post(
       "${AppConfig.baseUrl}/users",
       options: Options(

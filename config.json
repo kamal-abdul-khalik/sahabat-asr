@@ -2,7 +2,6 @@
     "openai_key": "",
     "modules": [
         "on_boarding",
-        "user",
         "register",
         "login",
         "leader",

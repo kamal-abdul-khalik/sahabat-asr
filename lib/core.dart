@@ -26,12 +26,11 @@ export 'package:kta_asr/module/profile_member/controller/profile_member_controll
 export 'package:kta_asr/module/profile_member/view/profile_member_view.dart';
 export 'package:kta_asr/module/register/controller/register_controller.dart';
 export 'package:kta_asr/module/register/view/register_view.dart';
-export 'package:kta_asr/module/user/controller/user_controller.dart';
-export 'package:kta_asr/module/user/view/user_view.dart';
 export 'package:kta_asr/service/auth_service.dart';
 export 'package:kta_asr/service/dropdown_service.dart';
 export 'package:kta_asr/service/leader_service.dart';
 export 'package:kta_asr/service/main_storage/main_storage.dart';
+export 'package:kta_asr/service/member_service.dart';
 export 'package:kta_asr/shared/theme/theme.dart';
 export 'package:kta_asr/shared/theme/theme_config.dart';
 export 'package:kta_asr/shared/theme/theme_dark.dart';

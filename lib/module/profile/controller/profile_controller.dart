@@ -8,6 +8,7 @@ class ProfileController extends State<ProfileView> implements MvcController {
   @override
   void initState() {
     instance = this;
+
     super.initState();
   }
 
@@ -22,7 +23,9 @@ class ProfileController extends State<ProfileView> implements MvcController {
     try {
       await AuthService.logout();
       await AuthService.removeToken();
+      hideLoading();
     } catch (e) {
+      hideLoading();
       showInfoDialog(e.toString());
     } finally {
       hideLoading();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/service/member_service.dart';
 
 class AddMemberController extends State<AddMemberView>
     implements MvcController {
@@ -62,16 +61,14 @@ class AddMemberController extends State<AddMemberView>
           imageKtp: imageKtp,
           imageSelfie: imageSelfie,
         );
-
         if (obj['status'] == false) {
           hideLoading();
           snackbarIconSoftDanger(message: obj['message']);
-          return;
+        } else {
+          hideLoading();
+          snackbarIconSoftSuccess(message: 'Data berhasil diupload');
+          Get.back();
         }
-        hideLoading();
-        snackbarIconSoftSuccess(message: 'Data berhasil diupload');
-        Get.to(const LeaderView());
-        return;
       } catch (e) {
         hideLoading();
         showInfoDialog(e.toString());
