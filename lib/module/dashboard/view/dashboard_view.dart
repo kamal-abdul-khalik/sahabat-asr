@@ -51,7 +51,7 @@ class DashboardView extends StatefulWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.32,
+                  height: MediaQuery.of(context).size.height * 0.28,
                   child: Container(
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.all(20),
@@ -91,15 +91,13 @@ class DashboardView extends StatefulWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 15.0),
                             const Text(
                               "ASR-YYSIYU1002",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24.0,
+                                  fontSize: 20.0,
                                   fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(height: 16.0),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -174,7 +174,7 @@ class AddMemberView extends StatefulWidget {
                         controller.ethnicId = value;
                       },
                     ),
-                  const SizedBox(height: 100.0),
+                  const SizedBox(height: 20.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(360, 60),
@@ -190,7 +190,7 @@ class AddMemberView extends StatefulWidget {
                           TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                     ),
                   ),
-                  const SizedBox(height: 100.0),
+                  const SizedBox(height: 50.0),
                 ],
               ),
             ),
