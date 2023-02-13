@@ -20,8 +20,12 @@ class AddMemberController extends State<AddMemberView>
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
-  final uploadFormKey = GlobalKey<FormState>();
-  bool isVisible = false;
+
+  bool isSelected = false;
+  updateIsSelected() {
+    isSelected = !isSelected;
+    setState(() {});
+  }
 
   String name = '';
   String email = '';
@@ -39,6 +43,7 @@ class AddMemberController extends State<AddMemberView>
   String imageKtp = '';
   String imageSelfie = '';
 
+  final uploadFormKey = GlobalKey<FormState>();
   doUpload() async {
     bool isValidate = uploadFormKey.currentState!.validate();
     if (isValidate) {
@@ -139,23 +144,5 @@ class AddMemberController extends State<AddMemberView>
       });
     }
     setState(() {});
-  }
-
-  printInput() {
-    print("name : $name");
-    print("email : $email");
-    print("ktpNumber : $ktpNumber");
-    print("cityCode : $cityCode");
-    print("districtCode : $districtCode");
-    print("villageCode : $villageCode");
-    print("phone : $phone");
-    print("birthPlace : $birthPlace");
-    print("birtDate : $birtDate");
-    print("address : $address");
-    print("gender : $gender");
-    print("religionId : $religionId");
-    print("ethnicId : $ethnicId");
-    print("imageKtp : $imageKtp");
-    print("imageSelfie : $imageSelfie");
   }
 }

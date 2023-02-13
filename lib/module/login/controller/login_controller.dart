@@ -32,16 +32,13 @@ class LoginController extends State<LoginView> implements MvcController {
       showLoading();
       try {
         Map obj = await AuthService.login(email: email!, password: password!);
+
         if (obj['status'] == false) {
           hideLoading();
           snackbarIconSoftDanger(message: obj['message']);
           return;
         }
         await AuthService.writeDataToStorage(key: 'token', value: obj['token']);
-        await AuthService.writeDataToStorage(
-            key: 'name', value: obj['data']['name']);
-        await AuthService.writeDataToStorage(
-            key: 'joined', value: obj['data']['joined']);
         hideLoading();
         snackbarIconSoftSuccess(
             message: 'Login Sukses, Selamat Datang Kembali');

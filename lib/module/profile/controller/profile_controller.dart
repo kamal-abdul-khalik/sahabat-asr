@@ -8,7 +8,7 @@ class ProfileController extends State<ProfileView> implements MvcController {
   @override
   void initState() {
     instance = this;
-
+    checkRole();
     super.initState();
   }
 
@@ -30,5 +30,12 @@ class ProfileController extends State<ProfileView> implements MvcController {
     } finally {
       hideLoading();
     }
+  }
+
+  Map hasRole = {};
+  checkRole() async {
+    Map obj = await AuthService.me();
+    hasRole = obj['meta'];
+    setState(() {});
   }
 }

@@ -24,7 +24,6 @@ class AddMemberView extends StatefulWidget {
                     label: "Foto KTP",
                     hint: "Foto KTP",
                     validator: Validator.required,
-                    value: null,
                     onChanged: (value) {
                       controller.imageKtp = value;
                     },
@@ -32,16 +31,16 @@ class AddMemberView extends StatefulWidget {
                   const SizedBox(height: 10.0),
                   QImagePicker(
                     label: "Foto Selfie",
-                    hint: "Your photo",
+                    hint: "Foto Selfie",
                     validator: Validator.required,
-                    value: null,
                     onChanged: (value) {
                       controller.imageSelfie = value;
                     },
                   ),
                   const SizedBox(height: 20.0),
                   QTextField(
-                    label: "Nama Lengkap",
+                    label: "Nama",
+                    hint: "Nama wajib sesuai KTP",
                     validator: Validator.required,
                     onChanged: (value) {
                       controller.name = value;
@@ -104,6 +103,7 @@ class AddMemberView extends StatefulWidget {
                   const SizedBox(height: 20.0),
                   QNumberField(
                     label: "No. HP/WA",
+                    maxLength: 12,
                     validator: Validator.required,
                     onChanged: (value) {
                       controller.phone = value;

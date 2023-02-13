@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kta_asr/core.dart';
 
 class DashboardController extends State<DashboardView>
@@ -10,7 +9,7 @@ class DashboardController extends State<DashboardView>
   @override
   void initState() {
     instance = this;
-    authData();
+    myProfile();
     super.initState();
   }
 
@@ -21,13 +20,11 @@ class DashboardController extends State<DashboardView>
   Widget build(BuildContext context) => widget.build(context, this);
   int currentIndex = 0;
   final CarouselController carouselController = CarouselController();
-  final storage = const FlutterSecureStorage();
-  String? authName = '';
-  String? authJoined = '';
 
-  authData() async {
-    authName = await storage.read(key: 'name');
-    authJoined = await storage.read(key: 'joined');
+  Map myData = {};
+  myProfile() async {
+    Map obj = await AuthService.me();
+    myData = obj['data'];
     setState(() {});
   }
 }

@@ -9,7 +9,6 @@ class MainNavigationController extends State<MainNavigationView>
   @override
   void initState() {
     instance = this;
-
     super.initState();
   }
 

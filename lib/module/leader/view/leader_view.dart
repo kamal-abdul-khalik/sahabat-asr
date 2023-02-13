@@ -18,7 +18,10 @@ class LeaderView extends StatefulWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => Get.to(const AddMemberView()),
+            onPressed: () async {
+              await Get.to(const AddMemberView());
+              await controller.getMemberList();
+            },
             icon: const Icon(
               color: Colors.white,
               Icons.add,
@@ -48,12 +51,32 @@ class LeaderView extends StatefulWidget {
                         barrierDismissible: true,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: const Text('Confirm'),
+                            title: const Text(
+                              'Peringatan',
+                              style: TextStyle(),
+                            ),
                             content: SingleChildScrollView(
                               child: ListBody(
-                                children: const <Widget>[
-                                  Text(
-                                      'Are you sure you want to delete this member?'),
+                                children: [
+                                  const Text(
+                                      "Apakah anda yakin akan menghapus data: "),
+                                  Center(
+                                    child: Text(
+                                      "${item['name']} ",
+                                      style: const TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20.0),
+                                  const Text(
+                                    "Aksi ini bersifat permanen dan tidak dapat dikembalikan",
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -69,7 +92,7 @@ class LeaderView extends StatefulWidget {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blueGrey,
+                                  backgroundColor: Colors.red,
                                 ),
                                 onPressed: () {
                                   confirm = true;
@@ -96,14 +119,22 @@ class LeaderView extends StatefulWidget {
                                 "https://i.ibb.co/S32HNjD/no-image.jpg",
                           ),
                         ),
-                        trailing: IconButton(
-                          onPressed: () =>
-                              Get.to(ProfileMemberView(member: item)),
-                          icon: const Icon(
-                            Icons.remove_red_eye,
-                            size: 20.0,
-                          ),
-                        ),
+                        trailing: item['isActive'] == 1
+                            ? IconButton(
+                                onPressed: () async => await Get.to(
+                                    ProfileMemberView(member: item)),
+                                icon: const Icon(
+                                  Icons.remove_red_eye,
+                                  size: 20.0,
+                                ),
+                              )
+                            : const Text(
+                                "Tidak Aktif",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 11.0,
+                                ),
+                              ),
                         title: Text("${item['name']}"),
                         subtitle: Text("${item['email']}"),
                       ),

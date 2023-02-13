@@ -13,12 +13,12 @@ class DashboardView extends StatefulWidget {
         title: RichText(
           text: TextSpan(
             text: "Hai, ",
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 16),
             children: [
               TextSpan(
-                text: controller.authName,
+                text: controller.myData['name'],
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               )
             ],
           ),
@@ -106,17 +106,18 @@ class DashboardView extends StatefulWidget {
                               children: [
                                 Text(
                                   textAlign: TextAlign.left,
-                                  "Terdaftar \n ${controller.authJoined}",
+                                  "Terdaftar \n ${controller.myData['joined']}",
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 14.0,
                                   ),
                                 ),
                                 Text(
-                                  controller.authName!,
+                                  textAlign: TextAlign.right,
+                                  "  \n ${controller.myData['name']}",
                                   style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12.0,
+                                      fontSize: 14.0,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ],

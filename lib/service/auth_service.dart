@@ -8,14 +8,25 @@ class AuthService {
     var response = await Dio().post(
       "${AppConfig.baseUrl}/login",
       options: Options(
+        headers: {"Content-Type": "application/json"},
+      ),
+      data: {"email": email, "password": password},
+    );
+    Map obj = response.data;
+    return obj;
+  }
+
+  static Future<Map> me() async {
+    const storage = FlutterSecureStorage();
+    var token = (await storage.read(key: 'token'))!;
+    var response = await Dio().get(
+      "${AppConfig.baseUrl}/me",
+      options: Options(
         headers: {
           "Content-Type": "application/json",
+          'Authorization': 'Bearer $token',
         },
       ),
-      data: {
-        "email": email,
-        "password": password,
-      },
     );
     Map obj = response.data;
     return obj;
@@ -44,14 +55,9 @@ class AuthService {
     const storage = FlutterSecureStorage();
     await storage.deleteAll();
     Get.offAll(const LoginView());
-
     return snackbarIconSoftSuccess(
-        message: 'Berhasil keluar dari apps, Sesi dihapus');
-  }
-
-  static readToken({required String key}) async {
-    const storage = FlutterSecureStorage();
-    return await storage.read(key: key);
+      message: 'Berhasil keluar dari apps, Sesi dihapus',
+    );
   }
 
   static authCheck() async {

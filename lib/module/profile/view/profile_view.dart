@@ -55,13 +55,14 @@ class ProfileView extends StatefulWidget {
                   child: ListView(
                     padding: const EdgeInsets.all(1),
                     children: [
-                      ProfileMenu(
-                        text: "Menu Koordinator",
-                        icon: Icons.person_add,
-                        textColor: Colors.blueAccent,
-                        containerIconColor: Colors.blueAccent,
-                        onTap: () => Get.to(const LeaderView()),
-                      ),
+                      if (controller.hasRole['is_leader'] == true)
+                        ProfileMenu(
+                          text: "Menu Koordinator",
+                          icon: Icons.person_add,
+                          textColor: Colors.blueAccent,
+                          containerIconColor: Colors.blueAccent,
+                          onTap: () => Get.to(const LeaderView()),
+                        ),
                       const SizedBox(height: 10.0),
                       ProfileMenu(
                           text: "Pengaturan",
@@ -71,10 +72,6 @@ class ProfileView extends StatefulWidget {
                           text: "Pusat Bantuan",
                           icon: Icons.help,
                           onTap: () => print("Bantuan")),
-                      ProfileMenu(
-                          text: "Hubungi Kami",
-                          icon: Icons.contact_support,
-                          onTap: () => print("Support")),
                       ProfileMenu(
                           text: "Bagikan",
                           icon: Icons.share,
