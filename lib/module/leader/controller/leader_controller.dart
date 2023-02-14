@@ -9,6 +9,7 @@ class LeaderController extends State<LeaderView> implements MvcController {
   void initState() {
     instance = this;
     getMemberList();
+
     super.initState();
   }
 
@@ -29,6 +30,22 @@ class LeaderController extends State<LeaderView> implements MvcController {
       setState(() {});
     } catch (e) {
       showInfoDialog(e.toString());
+    }
+  }
+
+  void runFilter(String query) {
+    List results = [];
+    if (query.isEmpty) {
+      getMemberList();
+    } else {
+      results = memberList
+          .where((user) =>
+              user["name"].toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    if (results.isNotEmpty) {
+      memberList = results;
+      setState(() {});
     }
   }
 
