@@ -34,7 +34,7 @@ class LoginController extends State<LoginView> implements MvcController {
           hideLoading();
           snackbarIconSoftDanger(message: obj['message']);
         }
-        await AuthService.saveToken(key: 'token', value: obj['token']);
+        await MainStorage.saveToken(key: 'token', value: obj['token']);
         hideLoading();
         snackbarIconSoftSuccess(
             message: 'Login Sukses, Selamat Datang Kembali');

@@ -1,4 +1,3 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
 
@@ -20,8 +19,7 @@ class MemberService {
     required String imageKtp,
     required String imageSelfie,
   }) async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().post(
       "${AppConfig.baseUrl}/users",
       options: Options(

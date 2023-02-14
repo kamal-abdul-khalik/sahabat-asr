@@ -22,7 +22,7 @@ class ProfileController extends State<ProfileView> implements MvcController {
     showLoading();
     try {
       await AuthService.logout();
-      await AuthService.removeToken();
+      await MainStorage.removeToken();
       hideLoading();
     } catch (e) {
       hideLoading();

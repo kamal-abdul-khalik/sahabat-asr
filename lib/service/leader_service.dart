@@ -1,11 +1,9 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kta_asr/config.dart';
-import 'package:kta_asr/core_package.dart';
+import 'package:kta_asr/core.dart';
 
 class LeaderService {
   static getMember() async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().get(
       "${AppConfig.baseUrl}/users",
       options: Options(
@@ -20,8 +18,7 @@ class LeaderService {
   }
 
   static deleteMember({required int id}) async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().delete(
       "${AppConfig.baseUrl}/users/$id",
       options: Options(
@@ -36,8 +33,7 @@ class LeaderService {
   }
 
   static getSingleMember({required int id}) async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().get(
       "${AppConfig.baseUrl}/users/$id",
       options: Options(

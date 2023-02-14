@@ -1,10 +1,11 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
 
 class AuthService {
-  static Future<Map> login(
-      {required String email, required String password}) async {
+  static Future<Map> login({
+    required String email,
+    required String password,
+  }) async {
     var response = await Dio().post(
       "${AppConfig.baseUrl}/login",
       options: Options(
@@ -17,8 +18,7 @@ class AuthService {
   }
 
   static Future<Map> me() async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().get(
       "${AppConfig.baseUrl}/me",
       options: Options(
@@ -33,8 +33,7 @@ class AuthService {
   }
 
   static logout() async {
-    const storage = FlutterSecureStorage();
-    var token = (await storage.read(key: 'token'))!;
+    var token = await MainStorage.readToken('token');
     var response = await Dio().post(
       "${AppConfig.baseUrl}/logout",
       options: Options(
@@ -46,23 +45,8 @@ class AuthService {
     );
   }
 
-  static saveToken({required String key, required value}) async {
-    const storage = FlutterSecureStorage();
-    return await storage.write(key: key, value: value);
-  }
-
-  static removeToken() async {
-    const storage = FlutterSecureStorage();
-    await storage.deleteAll();
-    Get.offAll(const LoginView());
-    return snackbarIconSoftSuccess(
-      message: 'Berhasil keluar dari apps, Sesi dihapus',
-    );
-  }
-
   static authCheck() async {
-    const storage = FlutterSecureStorage();
-    String? token = await storage.read(key: 'token');
+    var token = await MainStorage.readToken('token');
     if (token != null) {
       Future.delayed(const Duration(seconds: 5), () {
         Get.offAll(const MainNavigationView());
@@ -71,4 +55,23 @@ class AuthService {
       Get.offAll(const LoginView());
     }
   }
+
+  // static saveToken({required String key, required value}) async {
+  //   const storage = FlutterSecureStorage();
+  //   return await storage.write(key: key, value: value);
+  // }
+
+  // static removeToken() async {
+  //   const storage = FlutterSecureStorage();
+  //   await storage.deleteAll();
+  //   Get.offAll(const LoginView());
+  //   return snackbarIconSoftSuccess(
+  //     message: 'Berhasil keluar dari apps, Sesi dihapus',
+  //   );
+  // }
+
+  // static readToken(String? token) async {
+  //   const storage = FlutterSecureStorage();
+  //   return await storage.read(key: "$token");
+  // }
 }
