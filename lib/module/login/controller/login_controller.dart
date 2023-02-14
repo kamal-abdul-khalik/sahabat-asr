@@ -23,27 +23,22 @@ class LoginController extends State<LoginView> implements MvcController {
 
   String? email = '';
   String? password = '';
-  String? token = '';
 
   doLogin() async {
     bool isValidate = loginFormKey.currentState!.validate();
-
     if (isValidate) {
       showLoading();
       try {
         Map obj = await AuthService.login(email: email!, password: password!);
-
         if (obj['status'] == false) {
           hideLoading();
           snackbarIconSoftDanger(message: obj['message']);
-          return;
         }
-        await AuthService.writeDataToStorage(key: 'token', value: obj['token']);
+        await AuthService.saveToken(key: 'token', value: obj['token']);
         hideLoading();
         snackbarIconSoftSuccess(
             message: 'Login Sukses, Selamat Datang Kembali');
         Get.offAll(const MainNavigationView());
-        return;
       } finally {
         hideLoading();
       }

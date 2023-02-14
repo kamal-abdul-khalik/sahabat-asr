@@ -46,7 +46,7 @@ class AuthService {
     );
   }
 
-  static writeDataToStorage({required String key, required value}) async {
+  static saveToken({required String key, required value}) async {
     const storage = FlutterSecureStorage();
     return await storage.write(key: key, value: value);
   }

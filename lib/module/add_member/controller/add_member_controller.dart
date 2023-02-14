@@ -27,21 +27,21 @@ class AddMemberController extends State<AddMemberView>
     setState(() {});
   }
 
-  String name = '';
-  String email = '';
-  String ktpNumber = '';
-  String cityCode = '';
-  String districtCode = '';
-  String villageCode = '';
-  String phone = '';
-  String birthPlace = '';
-  String birtDate = '';
-  String address = '';
-  String gender = '';
-  int religionId = 0;
-  int ethnicId = 0;
-  String imageKtp = '';
-  String imageSelfie = '';
+  String? name = '';
+  String? email = '';
+  String? ktpNumber = '';
+  String? cityCode = '';
+  String? districtCode = '';
+  String? villageCode = '';
+  String? phone = '';
+  String? birthPlace = '';
+  String? birtDate = '';
+  String? address = '';
+  String? gender = '';
+  int? religionId = 0;
+  int? ethnicId = 0;
+  String? imageKtp = '';
+  String? imageSelfie = '';
 
   final uploadFormKey = GlobalKey<FormState>();
   doUpload() async {
@@ -50,21 +50,21 @@ class AddMemberController extends State<AddMemberView>
       showLoading();
       try {
         Map obj = await MemberService.uploadDataMember(
-          name: name,
-          email: email,
-          ktpNumber: ktpNumber,
-          cityCode: cityCode,
-          districtCode: districtCode,
-          villageCode: villageCode,
-          phone: phone,
-          birthPlace: birthPlace,
-          birtDate: birtDate,
-          address: address,
-          gender: gender,
-          religionId: religionId,
-          ethnicId: ethnicId,
-          imageKtp: imageKtp,
-          imageSelfie: imageSelfie,
+          name: name!,
+          email: email!,
+          ktpNumber: ktpNumber!,
+          cityCode: cityCode!,
+          districtCode: districtCode!,
+          villageCode: villageCode!,
+          phone: phone!,
+          birthPlace: birthPlace!,
+          birtDate: birtDate!,
+          address: address!,
+          gender: gender!,
+          religionId: religionId!,
+          ethnicId: ethnicId!,
+          imageKtp: imageKtp!,
+          imageSelfie: imageSelfie!,
         );
         if (obj['status'] == false) {
           hideLoading();
