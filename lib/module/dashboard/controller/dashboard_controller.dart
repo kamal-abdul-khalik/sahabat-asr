@@ -22,9 +22,11 @@ class DashboardController extends State<DashboardView>
   final CarouselController carouselController = CarouselController();
 
   Map myData = {};
+  Map hasRole = {};
   myProfile() async {
     Map obj = await AuthService.me();
     myData = obj['data'];
+    hasRole = obj['meta'];
     setState(() {});
   }
 }

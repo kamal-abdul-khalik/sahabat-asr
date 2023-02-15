@@ -91,24 +91,43 @@ class DashboardView extends StatefulWidget {
                                 ),
                               ],
                             ),
-                            const Text(
-                              "ASR-YYSIYU1002",
+                            Text(
+                              controller.myData['isActive'] == 0
+                                  ? 'TIDAK AKTIF'
+                                  : 'ASR-YYSIYU35',
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
+                                  color: controller.myData['isActive'] == 0
+                                      ? Colors.red
+                                      : Colors.white,
+                                  fontSize: 22.0,
                                   fontWeight: FontWeight.bold),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  textAlign: TextAlign.left,
-                                  "Terdaftar \n ${controller.myData['joined']}",
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                  ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.hasRole['is_leader'] == true
+                                          ? 'Koordinator'
+                                          : 'Anggota',
+                                      textAlign: TextAlign.left,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                    Text(
+                                      "${controller.myData['joined']}",
+                                      textAlign: TextAlign.left,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 Text(
                                   textAlign: TextAlign.right,

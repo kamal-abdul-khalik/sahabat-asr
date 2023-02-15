@@ -55,23 +55,4 @@ class AuthService {
       Get.offAll(const LoginView());
     }
   }
-
-  // static saveToken({required String key, required value}) async {
-  //   const storage = FlutterSecureStorage();
-  //   return await storage.write(key: key, value: value);
-  // }
-
-  // static removeToken() async {
-  //   const storage = FlutterSecureStorage();
-  //   await storage.deleteAll();
-  //   Get.offAll(const LoginView());
-  //   return snackbarIconSoftSuccess(
-  //     message: 'Berhasil keluar dari apps, Sesi dihapus',
-  //   );
-  // }
-
-  // static readToken(String? token) async {
-  //   const storage = FlutterSecureStorage();
-  //   return await storage.read(key: "$token");
-  // }
 }

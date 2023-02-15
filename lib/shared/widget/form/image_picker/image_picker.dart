@@ -46,6 +46,7 @@ class _QImagePickerState extends State<QImagePicker> {
       allowedExtensions: [
         "png",
         "jpg",
+        "jpeg",
       ],
       allowMultiple: false,
     );
