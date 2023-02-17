@@ -8,13 +8,14 @@ class MainNavigationView extends StatefulWidget {
     controller.view = this;
 
     return DefaultTabController(
-      length: 4,
+      length: 5,
       initialIndex: controller.selectedIndex,
       child: Scaffold(
         body: IndexedStack(
           index: controller.selectedIndex,
           children: const [
             DashboardView(),
+            NewsView(),
             PresenceView(),
             FavoriteView(),
             ProfileView(),
@@ -26,9 +27,15 @@ class MainNavigationView extends StatefulWidget {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(
-                MdiIcons.viewDashboard,
+                MdiIcons.home,
               ),
               label: "Beranda",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                MdiIcons.newspaper,
+              ),
+              label: "Kabar ASR",
             ),
             BottomNavigationBarItem(
               icon: Icon(

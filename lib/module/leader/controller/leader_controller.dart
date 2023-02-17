@@ -22,7 +22,7 @@ class LeaderController extends State<LeaderView> implements MvcController {
   List memberList = [];
   getMemberList() async {
     try {
-      Map obj = await LeaderService.getMember();
+      Map obj = await MemberService.getAllMember();
       memberList = obj['data'];
       memberList.isNotEmpty
           ? memberList
@@ -50,13 +50,13 @@ class LeaderController extends State<LeaderView> implements MvcController {
   }
 
   deleteMember(int id) async {
-    Map obj = await LeaderService.deleteMember(id: id);
-    snackbarIconSoftSuccess(message: 'member berhasil dihapus');
+    Map obj = await MemberService.deleteMember(id: id);
+    snackbarIconSoftSuccess(message: 'Member berhasil dihapus');
     getMemberList();
   }
 
   getSingleMember(int id) async {
-    Map obj = await LeaderService.getSingleMember(id: id);
+    Map obj = await MemberService.getSingleMember(id: id);
     Get.to(const ProfileMemberView());
   }
 }

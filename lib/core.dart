@@ -15,6 +15,8 @@ export 'package:kta_asr/module/login/controller/login_controller.dart';
 export 'package:kta_asr/module/login/view/login_view.dart';
 export 'package:kta_asr/module/main_navigation/controller/main_navigation_controller.dart';
 export 'package:kta_asr/module/main_navigation/view/main_navigation_view.dart';
+export 'package:kta_asr/module/news/controller/news_controller.dart';
+export 'package:kta_asr/module/news/view/news_view.dart';
 export 'package:kta_asr/module/on_boarding/controller/on_boarding_controller.dart';
 export 'package:kta_asr/module/on_boarding/view/on_boarding_view.dart';
 export 'package:kta_asr/module/presence/controller/presence_controller.dart';
