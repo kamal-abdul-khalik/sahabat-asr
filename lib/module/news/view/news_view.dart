@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
 
 class NewsView extends StatefulWidget {
