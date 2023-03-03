@@ -5,7 +5,7 @@ class NewsService {
   static getAllNews() async {
     var token = await MainStorage.readToken('token');
     var response = await Dio().get(
-      "${AppConfig.baseUrl}/articles",
+      "${AppConfig.baseUrl}/posts",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -14,6 +14,6 @@ class NewsService {
       ),
     );
     Map obj = response.data;
-    return obj;
+    return obj['data']['data'];
   }
 }

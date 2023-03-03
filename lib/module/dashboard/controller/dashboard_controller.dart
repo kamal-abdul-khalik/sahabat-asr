@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
+import 'package:kta_asr/service/slider_service.dart';
 
 class DashboardController extends State<DashboardView>
     implements MvcController {
@@ -9,6 +10,7 @@ class DashboardController extends State<DashboardView>
   @override
   void initState() {
     instance = this;
+    imageSlider();
     myProfile();
     super.initState();
   }
@@ -27,6 +29,14 @@ class DashboardController extends State<DashboardView>
     Map obj = await AuthService.me();
     myData = obj['data'];
     hasRole = obj['meta'];
+    setState(() {});
+  }
+
+  List imageSliderList = [];
+  imageSlider() async {
+    Map obj = await SliderService.getAllSlider();
+    var imageUrl = obj['data'];
+    imageSliderList = imageUrl.map((item) => item['thumbnail']).toList();
     setState(() {});
   }
 }

@@ -3,7 +3,7 @@ import 'package:kta_asr/core.dart';
 
 class AuthService {
   static Future<Map> login({
-    required String email,
+    required String username,
     required String password,
   }) async {
     var response = await Dio().post(
@@ -11,7 +11,7 @@ class AuthService {
       options: Options(
         headers: {"Content-Type": "application/json"},
       ),
-      data: {"email": email, "password": password},
+      data: {"username": username, "password": password},
     );
     Map obj = response.data;
     return obj;

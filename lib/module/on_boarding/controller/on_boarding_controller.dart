@@ -9,6 +9,7 @@ class OnBoardingController extends State<OnBoardingView>
   @override
   void initState() {
     instance = this;
+    // MainStorage.removeToken();
     AuthService.authCheck();
     super.initState();
   }

@@ -158,11 +158,11 @@ class LeaderView extends StatefulWidget {
                         leading: CircleAvatar(
                           backgroundColor: Colors.grey[200],
                           backgroundImage: NetworkImage(
-                            item['imageSelfie'] ??
+                            item['image_selfie'] ??
                                 "https://i.ibb.co/S32HNjD/no-image.jpg",
                           ),
                         ),
-                        trailing: item['isActive'] == 1
+                        trailing: item['is_active'] == 1
                             ? IconButton(
                                 onPressed: () async => await Get.to(
                                     ProfileMemberView(member: item)),

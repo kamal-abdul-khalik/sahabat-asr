@@ -41,7 +41,7 @@ class MemberService {
         "address": address,
         "gender": gender,
         "religion_id": religionId,
-        "etnic_id": ethnicId,
+        "ethnic_id": ethnicId,
         "image_ktp": imageKtp,
         "image_selfie": imageSelfie,
       },

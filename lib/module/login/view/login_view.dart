@@ -49,11 +49,11 @@ class LoginView extends StatefulWidget {
               ),
               const SizedBox(height: 30),
               CustomField(
-                label: "Email",
-                validator: (value) => Validator.email(value!),
+                label: "Username",
+                validator: (value) => Validator.required(value!),
                 suffixIcon: Icons.email,
                 onChanged: (value) {
-                  controller.email = value;
+                  controller.username = value;
                 },
               ),
               const SizedBox(height: 30),
@@ -66,27 +66,7 @@ class LoginView extends StatefulWidget {
                   controller.password = value;
                 },
               ),
-              const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      activeColor: primaryColor,
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                    const Text(
-                      "Ingat saya",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 50),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(360, 60),

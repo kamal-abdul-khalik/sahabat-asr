@@ -21,7 +21,7 @@ class LoginController extends State<LoginView> implements MvcController {
   Widget build(BuildContext context) => widget.build(context, this);
   final loginFormKey = GlobalKey<FormState>();
 
-  String? email = '';
+  String? username = '';
   String? password = '';
 
   doLogin() async {
@@ -29,7 +29,8 @@ class LoginController extends State<LoginView> implements MvcController {
     if (isValidate) {
       showLoading();
       try {
-        Map obj = await AuthService.login(email: email!, password: password!);
+        Map obj =
+            await AuthService.login(username: username!, password: password!);
         if (obj['status'] == false) {
           hideLoading();
           snackbarIconSoftDanger(message: obj['message']);
