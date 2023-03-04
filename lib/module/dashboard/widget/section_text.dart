@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:kta_asr/core.dart';
 
 class SectionText extends StatelessWidget {
   final String text;
-  final String textButton;
-  const SectionText({super.key, required this.text, required this.textButton});
+  final String? textButton;
+  final void Function()? onPressed;
+  const SectionText({
+    super.key,
+    required this.text,
+    this.textButton,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +20,14 @@ class SectionText extends StatelessWidget {
         children: [
           Text(
             text,
-            style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
           TextButton(
-            onPressed: () => Get.to(const NewsView()),
+            onPressed: () => onPressed,
             child: Text(
-              textButton,
+              textButton ?? '',
               style: const TextStyle(
-                fontSize: 14.0,
+                fontSize: 16.0,
               ),
             ),
           )

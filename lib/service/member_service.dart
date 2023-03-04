@@ -50,10 +50,10 @@ class MemberService {
     return obj;
   }
 
-  static getAllMember() async {
+  static getAllMember(page, search) async {
     var token = await MainStorage.readToken('token');
     var response = await Dio().get(
-      "${AppConfig.baseUrl}/users",
+      "${AppConfig.baseUrl}/users?page=$page&search=$search",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ class MemberService {
       ),
     );
     Map obj = response.data;
-    return obj;
+    return obj['data']['data'];
   }
 
   static deleteMember({required int id}) async {

@@ -22,50 +22,10 @@ class NewsView extends StatefulWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            const SizedBox(height: 20.0),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 6.0,
-                horizontal: 12.0,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(16.0),
-                ),
-                border: Border.all(
-                  width: 1.0,
-                  color: Colors.grey[300]!,
-                ),
-              ),
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.search),
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      initialValue: null,
-                      decoration: const InputDecoration.collapsed(
-                        filled: true,
-                        fillColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        hintText: "Search",
-                      ),
-                      onChanged: (value) {
-                        // controller.runFilter(value);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20.0),
             Expanded(
               child: KListView(
-                future: (page) async {
-                  return await NewsService.getAllNews();
+                future: (page, search) async {
+                  return await NewsService.getAllNews(page, search);
                 },
                 itemBuilder: (Map item, int index) {
                   return NewsCard(

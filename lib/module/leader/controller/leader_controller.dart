@@ -8,7 +8,7 @@ class LeaderController extends State<LeaderView> implements MvcController {
   @override
   void initState() {
     instance = this;
-    getMemberList();
+    // getMemberList();
 
     super.initState();
   }
@@ -19,44 +19,30 @@ class LeaderController extends State<LeaderView> implements MvcController {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  List memberList = [];
-  getMemberList() async {
-    try {
-      Map obj = await MemberService.getAllMember();
-      memberList = obj['data'];
-      memberList.isNotEmpty
-          ? memberList
-          : showInfoDialog('Anda belum memiliki member');
-      setState(() {});
-    } catch (e) {
-      showInfoDialog(e.toString());
-    }
-  }
+  // List memberList = [];
+  // int page = 1;
+  // String search = '';
+  // getMemberList() async {
+  //   try {
+  //     memberList = await MemberService.getAllMember(page, search);
 
-  void runFilter(String query) {
-    List results = [];
-    if (query.isEmpty) {
-      getMemberList();
-    } else {
-      results = memberList
-          .where((user) =>
-              user["name"].toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    }
-    if (results.isNotEmpty) {
-      memberList = results;
-      setState(() {});
-    }
-  }
+  //     memberList.isNotEmpty
+  //         ? memberList
+  //         : showInfoDialog('Anda belum memiliki member');
+  //     setState(() {});
+  //   } catch (e) {
+  //     showInfoDialog(e.toString());
+  //   }
+  // }
 
-  deleteMember(int id) async {
-    Map obj = await MemberService.deleteMember(id: id);
-    snackbarIconSoftSuccess(message: 'Member berhasil dihapus');
-    getMemberList();
-  }
+  // deleteMember(int id) async {
+  //   Map obj = await MemberService.deleteMember(id: id);
+  //   snackbarIconSoftSuccess(message: 'Member berhasil dihapus');
+  //   getMemberList();
+  // }
 
-  getSingleMember(int id) async {
-    Map obj = await MemberService.getSingleMember(id: id);
-    Get.to(const ProfileMemberView());
-  }
+  // getSingleMember(int id) async {
+  //   Map obj = await MemberService.getSingleMember(id: id);
+  //   Get.to(const ProfileMemberView());
+  // }
 }

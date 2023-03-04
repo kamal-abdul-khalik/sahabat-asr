@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
+import 'package:kta_asr/module/dashboard/widget/card_member.dart';
 import 'package:kta_asr/module/dashboard/widget/section_text.dart';
 
 class DashboardView extends StatefulWidget {
@@ -47,100 +48,23 @@ class DashboardView extends StatefulWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              SizedBox(
-                height: 210,
-                child: Container(
-                  padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(16.0),
-                    ),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        primaryColor,
-                        secondaryColor,
-                      ],
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                "Sahabat ASR",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w800),
-                              ),
-                              Image.asset(
-                                "assets/icon/logo-card.png",
-                              ),
-                            ],
-                          ),
-                          Text(
-                            controller.myData['is_active'] == 0
-                                ? 'TIDAK AKTIF'
-                                : controller.hasRole['is_leader'] == true
-                                    ? "${controller.myData['referral_token']}"
-                                    : "${controller.myData['member_code']}",
-                            style: TextStyle(
-                                color: controller.myData['is_active'] == 0
-                                    ? Colors.red
-                                    : Colors.white,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    controller.hasRole['is_leader'] == true
-                                        ? 'Koordinator'
-                                        : 'Anggota',
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${controller.myData['joined']}",
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                textAlign: TextAlign.right,
-                                "  \n ${controller.myData['name']}",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              CardMember(
+                  status: controller.myData['is_active'] == 0
+                      ? 'TIDAK AKTIF'
+                      : controller.hasRole['is_leader'] == true
+                          ? "${controller.myData['referral_token']}"
+                          : "${controller.myData['member_code']}",
+                  color: controller.myData['is_active'] == 0
+                      ? Colors.red
+                      : Colors.white,
+                  role: controller.hasRole['is_leader'] == true
+                      ? 'Koordinator'
+                      : 'Anggota',
+                  joined: "${controller.myData['joined']}",
+                  myName: "  \n ${controller.myData['name']}"),
+              const SizedBox(height: 10.0),
+              const SectionText(text: 'Banner Ucapan'),
+              const SizedBox(height: 10.0),
               Builder(
                 builder: (context) {
                   List images = controller.imageSliderList;
@@ -212,7 +136,11 @@ class DashboardView extends StatefulWidget {
                 },
               ),
               const SizedBox(height: 10.0),
-              const SectionText(text: 'Kabar ASR', textButton: 'Lainnya'),
+              SectionText(
+                text: 'Kabar ASR',
+                textButton: 'Lainnya...',
+                onPressed: () => Get.to(const NewsView()),
+              ),
               const SizedBox(height: 10.0),
             ],
           ),
