@@ -4,14 +4,12 @@ class NewsCard extends StatefulWidget {
   final String imageUrl;
   final String category;
   final String title;
-  final String body;
   final String createdAt;
   const NewsCard(
       {super.key,
       required this.imageUrl,
       required this.category,
       required this.title,
-      required this.body,
       required this.createdAt});
 
   @override
@@ -62,7 +60,7 @@ class _NewsCardState extends State<NewsCard> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6.0),
+                    const SizedBox(height: 10.0),
                     Text(
                       widget.title,
                       maxLines: 2,
@@ -70,15 +68,6 @@ class _NewsCardState extends State<NewsCard> {
                       style: const TextStyle(
                         fontSize: 12.0,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 6.0),
-                    Text(
-                      widget.body,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 12.0,
                       ),
                     ),
                   ],

@@ -44,7 +44,6 @@ class DashboardView extends StatefulWidget {
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          color: Colors.grey[200],
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
@@ -73,7 +72,7 @@ class DashboardView extends StatefulWidget {
                       CarouselSlider(
                         carouselController: controller.carouselController,
                         options: CarouselOptions(
-                          height: 120.0,
+                          height: 200.0,
                           autoPlay: true,
                           enlargeCenterPage: true,
                           onPageChanged: (index, reason) {

@@ -18,12 +18,12 @@ class NewsView extends StatefulWidget {
         actions: const [],
       ),
       body: Container(
-        color: Colors.grey[100],
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Expanded(
               child: KListView(
+                enableSearch: true,
                 future: (page, search) async {
                   return await NewsService.getAllNews(page, search);
                 },
@@ -32,12 +32,11 @@ class NewsView extends StatefulWidget {
                     imageUrl: AppConfig.urlImage + item['thumbnail'],
                     category: item['category']['name'],
                     title: item['title'],
-                    body: item['content'],
                     createdAt: item['created_at'],
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

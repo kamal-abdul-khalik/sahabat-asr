@@ -6,7 +6,7 @@ bool isDarkMode = false;
 get mq => MediaQuery.of(globalContext);
 get mqs => MediaQuery.of(globalContext).size;
 
-var primaryColor = const Color(0xff40BB07);
+var primaryColor = const Color(0xff10b323);
 var secondaryColor = const Color(0xFFB5CC22);
 var bgColor = const Color(0xFF212332);
 var defaultPadding = 16.0;
