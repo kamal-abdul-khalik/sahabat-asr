@@ -4,10 +4,12 @@ import 'package:kta_asr/shared/widget/form/textfield/text_field_search.dart';
 class KListView extends StatefulWidget {
   final Function(int page, String search) future;
   final Function(Map item, int page) itemBuilder;
+  final bool enableSearch;
   const KListView({
     super.key,
     required this.future,
     required this.itemBuilder,
+    this.enableSearch = false,
   });
 
   @override
@@ -53,15 +55,17 @@ class _KListViewState extends State<KListView> {
       onRefresh: () => reload(),
       child: Column(
         children: [
-          KTextFieldSearch(
-            onFieldSubmitted: (val) {
-              search = val;
-              page = 1;
-              items.clear();
-              loadData();
-            },
-          ),
-          const SizedBox(height: 5.0),
+          if (widget.enableSearch) ...[
+            KTextFieldSearch(
+              onFieldSubmitted: (val) {
+                search = val;
+                page = 1;
+                items.clear();
+                loadData();
+              },
+            ),
+            const SizedBox(height: 5.0),
+          ],
           Expanded(
             child: ListView.builder(
               controller: scrollController,

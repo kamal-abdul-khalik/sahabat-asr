@@ -39,6 +39,7 @@ class LeaderView extends StatefulWidget {
           children: [
             Expanded(
               child: KListView(
+                enableSearch: true,
                 future: (page, search) async {
                   return await MemberService.getAllMember(page, search);
                 },
