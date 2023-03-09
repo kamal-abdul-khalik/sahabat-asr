@@ -26,8 +26,8 @@ TextStyle googleFont = GoogleFonts.poppins();
 Color drawerBackgroundColor = const Color(0xff404E67);
 Color drawerFontColor = Colors.grey[300]!;
 
-double cardElevation = 2.0;
-double cardBorderRadius = 24.0;
+double cardElevation = 3.0;
+double cardBorderRadius = 28.0;
 
 const double h1 = 36;
 const double h2 = 30;

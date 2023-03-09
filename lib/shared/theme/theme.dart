@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 ThemeData getDefaultTheme() {
   return ThemeData().copyWith(
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.white70,
     appBarTheme: AppBarTheme(
       actionsIconTheme: const IconThemeData(
         color: Colors.white, //change your color here
@@ -22,7 +22,7 @@ ThemeData getDefaultTheme() {
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       unselectedItemColor: Colors.grey,
-      selectedItemColor: Colors.blueGrey[900]!,
+      selectedItemColor: primaryColor,
     ),
     textTheme: TextTheme(
       titleSmall: GoogleFonts.poppins(

@@ -20,6 +20,9 @@ class _NewsCardState extends State<NewsCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
       clipBehavior: Clip.antiAlias,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,

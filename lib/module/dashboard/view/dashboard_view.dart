@@ -41,10 +41,10 @@ class DashboardView extends StatefulWidget {
         backgroundColor: primaryColor,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          padding: const EdgeInsets.all(10.0),
+      body: RefreshIndicator(
+        onRefresh: () => controller.reload(),
+        child: SingleChildScrollView(
+          controller: ScrollController(),
           child: Column(
             children: [
               CardMember(
@@ -136,11 +136,26 @@ class DashboardView extends StatefulWidget {
               ),
               const SizedBox(height: 10.0),
               SectionText(
-                text: 'Kabar ASR',
+                text: 'Jadwal ASR',
                 textButton: 'Lainnya...',
-                onPressed: () => Get.to(const NewsView()),
+                onTap: () => {},
               ),
               const SizedBox(height: 10.0),
+              SectionText(
+                text: 'Kabar ASR',
+                textButton: 'Lainnya...',
+                onTap: () => Get.to(const NewsView()),
+              ),
+              const SizedBox(height: 10.0),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
             ],
           ),
         ),

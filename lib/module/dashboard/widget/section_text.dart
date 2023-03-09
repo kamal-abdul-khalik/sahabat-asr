@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kta_asr/core.dart';
 
 class SectionText extends StatelessWidget {
   final String text;
   final String? textButton;
-  final void Function()? onPressed;
+  final Function()? onTap;
   const SectionText({
     super.key,
     required this.text,
     this.textButton,
-    this.onPressed,
+    this.onTap,
   });
 
   @override
@@ -20,17 +21,22 @@ class SectionText extends StatelessWidget {
         children: [
           Text(
             text,
-            style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
           ),
-          TextButton(
-            onPressed: () => onPressed,
+          InkWell(
+            onTap: onTap,
             child: Text(
               textButton ?? '',
-              style: const TextStyle(
+              style: TextStyle(
+                color: primaryColor,
                 fontSize: 16.0,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -74,39 +74,19 @@ class _KListViewState extends State<KListView> {
       return;
     }
 
-    // Map responseMap = response?.data;
-    // List data = responseMap["data"];
-
     if (items.isEmpty) {
       page--;
     }
 
-    // for (var i = 0; i < data.length; i++) {
-    //   var item = data[i];
-    //   items.add(item);
-    // }
-
     loading = false;
     if (mounted) setState(() {});
   }
-
-  // loadData() async {
-  //   var newItems = await widget.future(page, search);
-  //   items.addAll(newItems);
-  //   setState(() {});
-  // }
 
   reload() async {
     if (mounted) {
       await loadData();
     }
   }
-
-  // reload() async {
-  //   page = 1;
-  //   items.clear();
-  //   await loadData();
-  // }
 
   @override
   Widget build(BuildContext context) {

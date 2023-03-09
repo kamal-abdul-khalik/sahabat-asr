@@ -23,6 +23,11 @@ class DashboardController extends State<DashboardView>
   int currentIndex = 0;
   final CarouselController carouselController = CarouselController();
 
+  reload() async {
+    imageSlider();
+    myProfile();
+  }
+
   Map myData = {};
   Map hasRole = {};
   myProfile() async {
