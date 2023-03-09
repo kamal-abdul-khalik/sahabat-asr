@@ -5,12 +5,13 @@ class NewsCard extends StatefulWidget {
   final String category;
   final String title;
   final String createdAt;
-  const NewsCard(
-      {super.key,
-      required this.imageUrl,
-      required this.category,
-      required this.title,
-      required this.createdAt});
+  const NewsCard({
+    super.key,
+    required this.imageUrl,
+    required this.category,
+    required this.title,
+    required this.createdAt,
+  });
 
   @override
   State<NewsCard> createState() => _NewsCardState();

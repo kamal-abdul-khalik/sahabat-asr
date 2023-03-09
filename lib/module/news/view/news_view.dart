@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/module/news/widget/news_card.dart';
-import 'package:kta_asr/service/news_service.dart';
-import 'package:kta_asr/shared/widget/form/list/k_list_view.dart';
 
 class NewsView extends StatefulWidget {
   const NewsView({Key? key}) : super(key: key);
@@ -28,11 +25,14 @@ class NewsView extends StatefulWidget {
                   return await NewsService.getAllNews(page, search);
                 },
                 itemBuilder: (Map item, int index) {
-                  return NewsCard(
-                    imageUrl: AppConfig.urlImage + item['thumbnail'],
-                    category: item['category']['name'],
-                    title: item['title'],
-                    createdAt: item['created_at'],
+                  return InkWell(
+                    onTap: () => Get.to(NewsSingleView(news: item)),
+                    child: NewsCard(
+                      imageUrl: AppConfig.urlImage + item['thumbnail'],
+                      category: item['category']['name'],
+                      title: item['title'],
+                      createdAt: item['created_at'],
+                    ),
                   );
                 },
               ),

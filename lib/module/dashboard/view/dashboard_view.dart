@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/module/dashboard/widget/card_member.dart';
-import 'package:kta_asr/module/dashboard/widget/section_text.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);

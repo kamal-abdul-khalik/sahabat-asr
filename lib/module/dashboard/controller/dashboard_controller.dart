@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/service/slider_service.dart';
 
 class DashboardController extends State<DashboardView>
     implements MvcController {

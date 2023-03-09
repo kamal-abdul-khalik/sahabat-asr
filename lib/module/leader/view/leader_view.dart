@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/module/leader/widget/list_view_member.dart';
-import 'package:kta_asr/shared/widget/form/list/k_list_view.dart';
 
 class LeaderView extends StatefulWidget {
   const LeaderView({Key? key}) : super(key: key);

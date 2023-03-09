@@ -8,6 +8,7 @@
         "add_member",
         "profile_member",
         "presence",
-        "news"
+        "news",
+        "news_single"
     ]
 }
