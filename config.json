@@ -2,13 +2,13 @@
     "openai_key": "",
     "modules": [
         "on_boarding",
-        "register",
-        "login",
-        "leader",
-        "add_member",
-        "profile_member",
+        "auth/register",
+        "auth/login",
+        "leader/leader",
+        "leader/add_member",
+        "leader/profile_member",
         "presence",
-        "news",
-        "news_single"
+        "news/news",
+        "news/news_single"
     ]
 }

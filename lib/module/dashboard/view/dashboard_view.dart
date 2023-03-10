@@ -60,7 +60,6 @@ class DashboardView extends StatefulWidget {
                   joined: "${controller.myData['joined']}",
                   myName: "  \n ${controller.myData['name']}"),
               const SizedBox(height: 10.0),
-              const SectionText(text: 'Banner Ucapan'),
               const SizedBox(height: 10.0),
               Builder(
                 builder: (context) {
@@ -132,6 +131,7 @@ class DashboardView extends StatefulWidget {
                   );
                 },
               ),
+              // const ImageSlider(),
               const SizedBox(height: 10.0),
               SectionText(
                 text: 'Jadwal ASR',
