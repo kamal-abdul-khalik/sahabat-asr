@@ -20,6 +20,21 @@ class Validator {
     return null;
   }
 
+  static String? ktpNumber(
+    dynamic value, {
+    String? fieldName,
+  }) {
+    if (value is String || value == null) {
+      if (value.toString() == "null") return "This field is required";
+      if (value.isEmpty) return "This field is required";
+      final regex = RegExp(r'^[0-9]{16}$');
+      if (!regex.hasMatch(value)) {
+        return 'Inputan wajib 16 digit nomor KTP';
+      }
+    }
+    return null;
+  }
+
   static String? email(String? value) {
     if (value!.isEmpty) return "This field is required";
 

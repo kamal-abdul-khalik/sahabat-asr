@@ -12,7 +12,10 @@ class NewsSingleView extends StatefulWidget {
     controller.view = this;
 
     return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(
           "${news!['title']}",
           maxLines: 1,

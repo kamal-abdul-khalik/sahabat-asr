@@ -60,7 +60,7 @@ class AddMemberView extends StatefulWidget {
                     label: "Nomor KTP",
                     maxLength: 16,
                     hint: "7401000000000001",
-                    validator: Validator.required,
+                    validator: Validator.ktpNumber,
                     onChanged: (value) {
                       controller.ktpNumber = value;
                     },
