@@ -29,6 +29,6 @@ class NewsService {
       ),
     );
     Map obj = response.data;
-    return obj['data'];
+    return obj;
   }
 }

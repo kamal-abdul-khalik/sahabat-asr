@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
+import 'package:kta_asr/module/dashboard/widget/card_schedule.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -131,14 +132,27 @@ class DashboardView extends StatefulWidget {
                 },
               ),
               const SizedBox(height: 20.0),
-              SectionText(
-                text: 'Jadwal ASR',
-                textButton: 'Lainnya...',
-                onTap: () => {},
+              const SectionText(text: 'Jadwal ASR'),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                height: 170,
+                child: ListView.builder(
+                  itemCount: controller.schedules.length,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.zero,
+                  clipBehavior: Clip.none,
+                  itemBuilder: (context, index) {
+                    var item = controller.schedules[index];
+                    return ScheduleCard(
+                      agendaTitle: item['title'],
+                      place: item['place'],
+                      date: item['date'],
+                      start: item['start'],
+                      end: item['end'],
+                    );
+                  },
+                ),
               ),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
               const SizedBox(height: 20.0),
               SectionText(
                 text: 'Kabar ASR',
@@ -147,25 +161,20 @@ class DashboardView extends StatefulWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    NewsLimit(
-                      future: () async {
-                        return await NewsService.getNewsLimit();
-                      },
-                      itemBuilder: (Map item, int index) {
-                        return InkWell(
-                          onTap: () => Get.to(NewsSingleView(news: item)),
-                          child: NewsCard(
-                            imageUrl: AppConfig.urlImage + item['thumbnail'],
-                            category: item['category']['name'],
-                            title: item['title'],
-                            createdAt: item['created_at'],
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+                child: ListView.builder(
+                  itemCount: controller.newsLimit.length,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  clipBehavior: Clip.none,
+                  itemBuilder: (context, index) {
+                    var item = controller.newsLimit[index];
+                    return NewsLimit(
+                      imageUrl: AppConfig.urlImage + item['thumbnail'],
+                      category: item['category']['name'],
+                      title: item['title'],
+                      createdAt: item['created_at'],
+                    );
+                  },
                 ),
               ),
             ],

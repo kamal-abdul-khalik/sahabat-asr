@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
+import 'package:kta_asr/service/schedule_service.dart';
 
 class DashboardController extends State<DashboardView>
     implements MvcController {
@@ -9,8 +10,10 @@ class DashboardController extends State<DashboardView>
   @override
   void initState() {
     instance = this;
-    imageSlider();
     myProfile();
+    imageSlider();
+    asrSchedule();
+    getNewsLimit();
     super.initState();
   }
 
@@ -23,8 +26,10 @@ class DashboardController extends State<DashboardView>
   final CarouselController carouselController = CarouselController();
 
   reload() async {
-    imageSlider();
     myProfile();
+    imageSlider();
+    asrSchedule();
+    getNewsLimit();
   }
 
   Map myData = {};
@@ -33,6 +38,20 @@ class DashboardController extends State<DashboardView>
     Map obj = await AuthService.me();
     myData = obj['data'];
     hasRole = obj['meta'];
+    setState(() {});
+  }
+
+  List schedules = [];
+  asrSchedule() async {
+    Map obj = await ScheduleService.getSchedule();
+    schedules = obj['data'];
+    setState(() {});
+  }
+
+  List newsLimit = [];
+  getNewsLimit() async {
+    Map obj = await NewsService.getNewsLimit();
+    newsLimit = obj['data'];
     setState(() {});
   }
 

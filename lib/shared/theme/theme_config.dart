@@ -11,7 +11,7 @@ var secondaryColor = const Color(0xFFB5CC22);
 var bgColor = const Color(0xFF212332);
 var defaultPadding = 16.0;
 
-var dangerColor = Colors.red[300]!;
+var dangerColor = Colors.red[400]!;
 var successColor = Colors.green[300]!;
 var infoColor = Colors.blue[300]!;
 var warningColor = Colors.orange[300]!;
