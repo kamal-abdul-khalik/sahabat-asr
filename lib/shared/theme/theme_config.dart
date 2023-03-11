@@ -20,7 +20,7 @@ var disabledColor = Colors.grey[300]!;
 var disabledTextColor = Colors.grey[800];
 
 Color appbarBackgroundColor = primaryColor;
-Color scaffoldBackgroundColor = Colors.green[50]!;
+Color scaffoldBackgroundColor = const Color(0xFFFBFFF8);
 MaterialColor primarySwatch = Colors.blueGrey;
 TextStyle googleFont = GoogleFonts.poppins();
 Color drawerBackgroundColor = const Color(0xff404E67);

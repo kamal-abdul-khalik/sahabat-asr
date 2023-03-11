@@ -40,6 +40,7 @@ class _ScheduleCardState extends State<ScheduleCard> {
                 children: [
                   Text(
                     widget.agendaTitle,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
