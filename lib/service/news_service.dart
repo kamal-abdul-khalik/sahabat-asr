@@ -16,4 +16,19 @@ class NewsService {
     Map obj = response.data;
     return obj['data']['data'];
   }
+
+  static getNewsLimit() async {
+    var token = await MainStorage.readToken('token');
+    var response = await Dio().get(
+      "${AppConfig.baseUrl}/posts-limit",
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    Map obj = response.data;
+    return obj['data'];
+  }
 }

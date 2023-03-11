@@ -60,7 +60,6 @@ class DashboardView extends StatefulWidget {
                   joined: "${controller.myData['joined']}",
                   myName: "  \n ${controller.myData['name']}"),
               const SizedBox(height: 10.0),
-              const SizedBox(height: 10.0),
               Builder(
                 builder: (context) {
                   List images = controller.imageSliderList;
@@ -131,29 +130,44 @@ class DashboardView extends StatefulWidget {
                   );
                 },
               ),
-              // const ImageSlider(),
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 20.0),
               SectionText(
                 text: 'Jadwal ASR',
                 textButton: 'Lainnya...',
                 onTap: () => {},
               ),
-              const SizedBox(height: 10.0),
+              const Text("text"),
+              const Text("text"),
+              const Text("text"),
+              const SizedBox(height: 20.0),
               SectionText(
                 text: 'Kabar ASR',
                 textButton: 'Lainnya...',
                 onTap: () => Get.to(const NewsView()),
               ),
-              const SizedBox(height: 10.0),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
-              const Text("text"),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    NewsLimit(
+                      future: () async {
+                        return await NewsService.getNewsLimit();
+                      },
+                      itemBuilder: (Map item, int index) {
+                        return InkWell(
+                          onTap: () => Get.to(NewsSingleView(news: item)),
+                          child: NewsCard(
+                            imageUrl: AppConfig.urlImage + item['thumbnail'],
+                            category: item['category']['name'],
+                            title: item['title'],
+                            createdAt: item['created_at'],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 ThemeData getDefaultTheme() {
   return ThemeData().copyWith(
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: Colors.white70,
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
     appBarTheme: AppBarTheme(
       actionsIconTheme: const IconThemeData(
         color: Colors.white, //change your color here

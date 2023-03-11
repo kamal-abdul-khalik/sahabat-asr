@@ -10,6 +10,8 @@ export 'package:kta_asr/module/auth/register/view/register_view.dart';
 export 'package:kta_asr/module/dashboard/controller/dashboard_controller.dart';
 export 'package:kta_asr/module/dashboard/view/dashboard_view.dart';
 export 'package:kta_asr/module/dashboard/widget/card_member.dart';
+export 'package:kta_asr/module/dashboard/widget/image_slider.dart';
+export 'package:kta_asr/module/dashboard/widget/news_limit.dart';
 export 'package:kta_asr/module/dashboard/widget/section_text.dart';
 export 'package:kta_asr/module/favorite/controller/favorite_controller.dart';
 export 'package:kta_asr/module/favorite/view/favorite_view.dart';
