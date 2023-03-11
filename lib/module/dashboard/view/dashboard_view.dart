@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/config.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/module/dashboard/widget/card_schedule.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -132,27 +131,29 @@ class DashboardView extends StatefulWidget {
                 },
               ),
               const SizedBox(height: 20.0),
-              const SectionText(text: 'Jadwal ASR'),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                height: 170,
-                child: ListView.builder(
-                  itemCount: controller.schedules.length,
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.zero,
-                  clipBehavior: Clip.none,
-                  itemBuilder: (context, index) {
-                    var item = controller.schedules[index];
-                    return ScheduleCard(
-                      agendaTitle: item['title'],
-                      place: item['place'],
-                      date: item['date'],
-                      start: item['start'],
-                      end: item['end'],
-                    );
-                  },
+              if (controller.myData['member_code'] != null)
+                const SectionText(text: 'Jadwal ASR'),
+              if (controller.myData['member_code'] != null)
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  height: 170,
+                  child: ListView.builder(
+                    itemCount: controller.schedules.length,
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.zero,
+                    clipBehavior: Clip.none,
+                    itemBuilder: (context, index) {
+                      var item = controller.schedules[index];
+                      return ScheduleCard(
+                        agendaTitle: item['title'],
+                        place: item['place'],
+                        date: item['date'],
+                        start: item['start'],
+                        end: item['end'],
+                      );
+                    },
+                  ),
                 ),
-              ),
               const SizedBox(height: 20.0),
               SectionText(
                 text: 'Kabar ASR',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kta_asr/core.dart';
-import 'package:kta_asr/service/schedule_service.dart';
 
 class DashboardController extends State<DashboardView>
     implements MvcController {
@@ -11,8 +10,8 @@ class DashboardController extends State<DashboardView>
   void initState() {
     instance = this;
     myProfile();
-    imageSlider();
-    asrSchedule();
+    getImageSlider();
+    getSchedule();
     getNewsLimit();
     super.initState();
   }
@@ -27,8 +26,8 @@ class DashboardController extends State<DashboardView>
 
   reload() async {
     myProfile();
-    imageSlider();
-    asrSchedule();
+    getImageSlider();
+    getSchedule();
     getNewsLimit();
   }
 
@@ -42,7 +41,7 @@ class DashboardController extends State<DashboardView>
   }
 
   List schedules = [];
-  asrSchedule() async {
+  getSchedule() async {
     Map obj = await ScheduleService.getSchedule();
     schedules = obj['data'];
     setState(() {});
@@ -56,7 +55,7 @@ class DashboardController extends State<DashboardView>
   }
 
   List imageSliderList = [];
-  imageSlider() async {
+  getImageSlider() async {
     Map obj = await SliderService.getAllSlider();
     var imageUrl = obj['data'];
     imageSliderList = imageUrl.map((item) => item['thumbnail']).toList();

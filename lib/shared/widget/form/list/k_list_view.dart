@@ -138,7 +138,7 @@ class _KListViewState extends State<KListView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Terjadi kesalahan tak terduga",
+              "Data belum tersedia",
               style: TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.bold,
