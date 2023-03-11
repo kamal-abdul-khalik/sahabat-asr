@@ -18,7 +18,7 @@ class AuthService {
   }
 
   static Future<Map> me() async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/me",
       options: Options(
@@ -33,7 +33,7 @@ class AuthService {
   }
 
   static logout() async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().post(
       "${AppConfig.baseUrl}/logout",
       options: Options(
@@ -46,7 +46,7 @@ class AuthService {
   }
 
   static authCheck() async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     if (token != null) {
       Future.delayed(const Duration(seconds: 5), () {
         Get.offAll(const MainNavigationView());

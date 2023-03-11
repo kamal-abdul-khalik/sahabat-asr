@@ -3,7 +3,7 @@ import 'package:kta_asr/core.dart';
 
 class ScheduleService {
   static getSchedule() async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/schedules",
       options: Options(

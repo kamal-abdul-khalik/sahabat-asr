@@ -3,7 +3,7 @@ import 'package:kta_asr/core.dart';
 
 class NewsService {
   static getAllNews(page, search) async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/posts?page=$page&search=$search",
       options: Options(
@@ -18,7 +18,7 @@ class NewsService {
   }
 
   static getNewsLimit() async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/posts-limit",
       options: Options(

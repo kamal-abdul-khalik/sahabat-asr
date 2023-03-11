@@ -19,7 +19,7 @@ class MemberService {
     required String imageKtp,
     required String imageSelfie,
   }) async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().post(
       "${AppConfig.baseUrl}/users",
       options: Options(
@@ -51,7 +51,7 @@ class MemberService {
   }
 
   static getAllMember(page, search) async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/users?page=$page&search=$search",
       options: Options(
@@ -66,7 +66,7 @@ class MemberService {
   }
 
   static deleteMember({required int id}) async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().delete(
       "${AppConfig.baseUrl}/users/$id",
       options: Options(
@@ -81,7 +81,7 @@ class MemberService {
   }
 
   static getSingleMember({required int id}) async {
-    var token = await MainStorage.readToken('token');
+    var token = await mainStorage.get("token");
     var response = await Dio().get(
       "${AppConfig.baseUrl}/users/$id",
       options: Options(
