@@ -39,8 +39,8 @@ class AddMemberView extends StatefulWidget {
                   ),
                   const SizedBox(height: 20.0),
                   QTextField(
-                    label: "Nama",
-                    hint: "Nama wajib sesuai KTP",
+                    label: "Nama Lengkap",
+                    maxLength: 20,
                     validator: Validator.required,
                     onChanged: (value) {
                       controller.name = value;
@@ -59,7 +59,6 @@ class AddMemberView extends StatefulWidget {
                   QNumberField(
                     label: "Nomor KTP",
                     maxLength: 16,
-                    hint: "7401000000000001",
                     validator: Validator.ktpNumber,
                     onChanged: (value) {
                       controller.ktpNumber = value;
@@ -69,7 +68,6 @@ class AddMemberView extends StatefulWidget {
                   if (controller.cityList.isNotEmpty)
                     QDropdownField(
                       label: "Kota",
-                      hint: 'Pilih Kota Asal',
                       validator: Validator.required,
                       items: controller.cityList,
                       onChanged: (value, label) async {
@@ -81,7 +79,7 @@ class AddMemberView extends StatefulWidget {
                         await controller.getDistrict(value);
                       },
                     ),
-                  const SizedBox(height: 20.0),
+                  // const SizedBox(height: 10.0),
                   if (controller.districtList.isNotEmpty)
                     QDropdownField(
                       label: "Kecamatan",
@@ -109,7 +107,6 @@ class AddMemberView extends StatefulWidget {
                         controller.villageCode = value;
                       },
                     ),
-                  const SizedBox(height: 20.0),
                   QNumberField(
                     label: "No. HP/WA",
                     maxLength: 12,
@@ -137,23 +134,24 @@ class AddMemberView extends StatefulWidget {
                     },
                   ),
                   const SizedBox(height: 20.0),
-                  QMemoField(
-                    label: "Address",
+                  QTextField(
+                    label: "Alamat",
                     validator: Validator.required,
                     onChanged: (value) {
                       controller.address = value;
                     },
                   ),
+                  const SizedBox(height: 20.0),
                   QRadioField(
-                    label: "Gender",
+                    label: "Jenis Kelamin",
                     validator: Validator.atLeastOneitem,
                     items: const [
                       {
-                        "label": "laki-laki",
+                        "label": "Laki-Laki",
                         "value": 1,
                       },
                       {
-                        "label": "perempuan",
+                        "label": "Perempuan",
                         "value": 2,
                       }
                     ],
@@ -161,11 +159,9 @@ class AddMemberView extends StatefulWidget {
                       controller.gender = label!;
                     },
                   ),
-                  const SizedBox(height: 20.0),
                   if (controller.religionList.isNotEmpty)
                     QDropdownField(
                       label: "Agama",
-                      hint: 'Pilih Agama',
                       validator: Validator.required,
                       items: controller.religionList,
                       onChanged: (value, label) {
@@ -176,14 +172,13 @@ class AddMemberView extends StatefulWidget {
                   if (controller.ethnicList.isNotEmpty)
                     QDropdownField(
                       label: "Suku",
-                      hint: 'Pilih Suku',
                       validator: Validator.required,
                       items: controller.ethnicList,
                       onChanged: (value, label) {
                         controller.ethnicId = value;
                       },
                     ),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 50.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(360, 60),

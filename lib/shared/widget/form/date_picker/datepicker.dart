@@ -79,9 +79,14 @@ class _QDatePickerState extends State<QDatePicker> {
             labelStyle: const TextStyle(
               color: Colors.blueGrey,
             ),
-            enabledBorder: const UnderlineInputBorder(
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: primaryColor),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Colors.blueGrey,
+                color: textFieldTheme,
               ),
             ),
             suffixIcon: const Icon(

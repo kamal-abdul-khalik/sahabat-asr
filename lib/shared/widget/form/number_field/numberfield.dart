@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:kta_asr/core.dart';
 
 class QNumberField extends StatefulWidget {
   final String label;
@@ -67,9 +67,14 @@ class _QNumberFieldState extends State<QNumberField> {
         labelStyle: const TextStyle(
           color: Colors.blueGrey,
         ),
-        enabledBorder: const UnderlineInputBorder(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: primaryColor),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: Colors.blueGrey,
+            color: textFieldTheme,
           ),
         ),
         suffixIcon: const Icon(

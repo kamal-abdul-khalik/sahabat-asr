@@ -223,9 +223,9 @@ class _QImagePickerState extends State<QImagePicker> {
                       labelStyle: const TextStyle(
                         color: Colors.blueGrey,
                       ),
-                      enabledBorder: const UnderlineInputBorder(
+                      enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.blueGrey,
+                          color: secondaryColor,
                         ),
                       ),
                       suffixIcon: Transform.scale(

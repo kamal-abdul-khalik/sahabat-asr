@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kta_asr/core.dart';
 
 class QDropdownField extends StatefulWidget {
   final String label;
@@ -67,34 +68,42 @@ class _QDropdownFieldState extends State<QDropdownField> {
             labelText: widget.label,
             errorText: field.errorText,
             helperText: widget.hint,
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: primaryColor),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: textFieldTheme,
+              ),
+            ),
           ),
           child: DropdownButtonHideUnderline(
             child: ButtonTheme(
               alignedDropdown: false,
               child: SizedBox(
+                height: 20,
                 child: DropdownButton<String>(
                   isExpanded: true,
                   value: currentValue,
-                  icon: Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: Icon(
-                      Icons.arrow_drop_down_outlined,
-                      size: 24.0,
-                      color: Theme.of(context).textTheme.bodyLarge!.color,
-                    ),
+                  icon: Icon(
+                    Icons.arrow_drop_down_outlined,
+                    size: 24.0,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
                   ),
-                  iconSize: 16,
-                  elevation: 16,
+                  // iconSize: 16,
+                  // elevation: 16,
                   style: TextStyle(
                     fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                     fontFamily:
                         Theme.of(context).textTheme.bodyMedium!.fontFamily,
                     color: Theme.of(context).textTheme.bodyMedium!.color,
                   ),
-                  underline: Container(
-                    height: 0,
-                    color: Colors.grey[300],
-                  ),
+                  // underline: Container(
+                  //   height: 0,
+                  //   color: Colors.grey[300],
+                  // ),
                   onChanged: (String? newValue) {
                     if (newValue == "-" && widget.emptyMode) {
                       selectedValue = null;
