@@ -107,6 +107,7 @@ class AddMemberView extends StatefulWidget {
                         controller.villageCode = value;
                       },
                     ),
+                  const SizedBox(height: 20.0),
                   QNumberField(
                     label: "No. HP/WA",
                     maxLength: 12,

@@ -47,7 +47,7 @@ class DashboardView extends StatefulWidget {
             children: [
               CardMember(
                   status: controller.myData['is_active'] == 0
-                      ? 'TIDAK AKTIF'
+                      ? 'Menunggu Verifikasi'
                       : controller.hasRole['is_leader'] == true
                           ? "${controller.myData['referral_token']}"
                           : "${controller.myData['member_code']}",
