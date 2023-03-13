@@ -169,11 +169,14 @@ class DashboardView extends StatefulWidget {
                   clipBehavior: Clip.none,
                   itemBuilder: (context, index) {
                     var item = controller.newsLimit[index];
-                    return NewsLimit(
-                      imageUrl: AppConfig.urlImage + item['thumbnail'],
-                      category: item['category']['name'],
-                      title: item['title'],
-                      createdAt: item['created_at'],
+                    return InkWell(
+                      onTap: () => Get.to(NewsSingleView(news: item)),
+                      child: NewsLimit(
+                        imageUrl: AppConfig.urlImage + item['thumbnail'],
+                        category: item['category']['name'],
+                        title: item['title'],
+                        createdAt: item['created_at'],
+                      ),
                     );
                   },
                 ),
