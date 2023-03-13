@@ -62,7 +62,7 @@ class LeaderView extends StatefulWidget {
                             ),
                           ),
                     title: item['name'],
-                    subtitle: item['member_code'],
+                    subtitle: item['member_code'] ?? '',
                   );
                 },
               ),

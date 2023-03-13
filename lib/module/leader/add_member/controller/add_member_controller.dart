@@ -21,12 +21,6 @@ class AddMemberController extends State<AddMemberView>
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  bool isSelected = false;
-  updateIsSelected() {
-    isSelected = !isSelected;
-    setState(() {});
-  }
-
   String? name = '';
   String? email = '';
   String? ktpNumber = '';

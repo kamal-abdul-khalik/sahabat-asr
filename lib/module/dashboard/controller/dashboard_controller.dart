@@ -22,6 +22,7 @@ class DashboardController extends State<DashboardView>
   @override
   Widget build(BuildContext context) => widget.build(context, this);
   int currentIndex = 0;
+  bool loading = false;
   final CarouselController carouselController = CarouselController();
 
   reload() async {
@@ -42,8 +43,11 @@ class DashboardController extends State<DashboardView>
 
   List schedules = [];
   getSchedule() async {
+    loading = true;
+    setState(() {});
     Map obj = await ScheduleService.getSchedule();
     schedules = obj['data'];
+    loading = false;
     setState(() {});
   }
 

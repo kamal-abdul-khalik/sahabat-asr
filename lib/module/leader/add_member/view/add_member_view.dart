@@ -74,6 +74,10 @@ class AddMemberView extends StatefulWidget {
                       items: controller.cityList,
                       onChanged: (value, label) async {
                         controller.cityCode = value;
+                        if (controller.cityCode !=
+                            await controller.getDistrict(value)) {
+                          controller.districtList = [];
+                        }
                         await controller.getDistrict(value);
                       },
                     ),
@@ -86,17 +90,22 @@ class AddMemberView extends StatefulWidget {
                       items: controller.districtList,
                       onChanged: (value, label) async {
                         controller.districtCode = value;
+                        if (controller.districtCode !=
+                            await controller.getVillage(value)) {
+                          controller.villageList = [];
+                        }
                         await controller.getVillage(value);
                       },
                     ),
                   const SizedBox(height: 20.0),
-                  if (controller.villageList.isNotEmpty)
+                  if (controller.villageList.isNotEmpty &&
+                      controller.districtList.isNotEmpty)
                     QDropdownField(
                       label: "Kelurahan",
                       hint: 'Pilih Kelurahan Asal',
                       validator: Validator.required,
                       items: controller.villageList,
-                      onChanged: (value, label) {
+                      onChanged: (value, label) async {
                         controller.villageCode = value;
                       },
                     ),
